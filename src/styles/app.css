@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-display: "Fraunces", "Georgia", serif;
+    --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+    --color-paper: #fafaf9;
+    --color-ink: #1a1a18;
+    --color-ink-soft: #44443e;
+    --color-mute: #71706a;
+    --color-line: #e2e0d8;
+    --color-moss: #1f6b4a;
+    --color-moss-soft: #e3f0e8;
+
+    --color-paper-dark: #15161a;
+    --color-ink-dark: #f1f0ec;
+    --color-ink-soft-dark: #c7c6c0;
+    --color-mute-dark: #94938c;
+    --color-line-dark: #2d2e33;
+    --color-moss-dark: #4fd690;
+    --color-moss-soft-dark: #1c2b22;
+}
+
+@layer base {
+    html {
+        color-scheme: light;
+    }
+    html.dark {
+        color-scheme: dark;
+    }
+
+    body {
+        background-color: var(--color-paper);
+        color: var(--color-ink);
+        font-family: var(--font-sans);
+        transition:
+            background-color 0.25s ease,
+            color 0.25s ease;
+    }
+
+    html.dark body {
+        background-color: var(--color-paper-dark);
+        color: var(--color-ink-dark);
+    }
+}
+
+/* signature element: hand-drawn underline that traces in on hover */
+.ink-link {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    padding-bottom: 1px;
+}
+.ink-link:hover,
+.ink-link:focus-visible {
+    background-size: 100% 1px;
+}
+
+/* available dot */
+.pulse-dot {
+    position: relative;
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-moss);
+}
+.pulse-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--color-moss);
+    animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+html.dark .pulse-dot,
+html.dark .pulse-dot::after {
+    background: var(--color-moss-dark);
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(2.8);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pulse-dot::after {
+        animation: none;
+    }
+    .ink-link {
+        transition: none;
+    }
+}
