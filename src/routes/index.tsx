@@ -118,7 +118,7 @@ function Home() {
       <section className="mb-20">
         <div className="flex items-center gap-4">
           <img
-            src="./src/public/avatar.jpg"
+            src="/avatar.jpg"
             alt="Johnson Tolotriniavo"
             className="h-14 w-14 rounded-full object-cover"
           />

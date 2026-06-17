@@ -24,7 +24,7 @@ export const Route = createRootRoute({
     links: [
       { rel: "stylesheet", href: appCss },
 
-      { rel: "icon", href: "./src/public/avatar.jpg" },
+      { rel: "icon", href: "/avatar.jpg" },
       {
         rel: "preconnect",
         href: "https://fonts.googleapis.com",
