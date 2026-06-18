@@ -102,12 +102,11 @@ const links = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/tolotriniavo-johnson-b9427b26b",
   },
-  { label: "Email", href: "mailto:Johnsontolotriniavo@gmail.com" },
 ];
 
 function Home() {
   return (
-    <main className="mx-auto flex max-w-2xl flex-col px-6 py-16 sm:py-24">
+    <main className="mx-auto flex max-w-2xl flex-col px-6 py-16 sm:py-24 space-y-20">
       <header className="mb-16 flex items-center justify-between">
         <span className="font-display text-sm tracking-wide text-mute dark:text-mute-dark">
           Johnson.dev
@@ -115,7 +114,7 @@ function Home() {
         <ThemeToggle />
       </header>
 
-      <section className="mb-20">
+      <section>
         <div className="flex items-center gap-4">
           <img
             src="/avatar.jpg"
@@ -136,17 +135,25 @@ function Home() {
             rel="noreferrer"
             className="ink-link font-display text-lg font-medium text-ink dark:text-ink-dark"
           >
-            Hallomada
+            Hallomada.
           </a>
-          , a community platform I'm building outside of client work.
         </p>
-        {/*<div className="mt-6 flex items-center gap-2 text-sm text-mute dark:text-mute-dark">
-          <span className="pulse-dot" aria-hidden="true" />
-          Open to new opportunities
-        </div>*/}
+        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              className="text-ink-soft dark:text-ink-soft-dark font-bold border-b"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       </section>
 
-      <section className="mb-20">
+      <section>
         <SectionLabel index="01" label="What I'm building" />
         <div className="rounded-lg border border-line p-6 dark:border-line-dark">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -206,7 +213,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mb-20">
+      <section>
         <SectionLabel index="02" label="The weapons" />
         <ul className="space-y-5">
           {techStack.map((tech) => (
@@ -222,23 +229,18 @@ function Home() {
         </ul>
       </section>
 
-      <section className="mb-16">
+      <section>
         <SectionLabel index="03" label="Get in touch" />
         <p className="mb-5 text-ink-soft dark:text-ink-soft-dark">
           Have a project in mind or just want to talk shop? My inbox is open.
         </p>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target={link.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
-              className="ink-link text-ink-soft dark:text-ink-soft-dark"
-            >
-              {link.label}
-            </a>
-          ))}
+          <a
+            href="mailto:johnsontolotriniavo@gmail.com"
+            className="text-ink-soft dark:text-ink-soft-dark border-b"
+          >
+            Johnsontolotriniavo@gmail.com
+          </a>
         </div>
       </section>
 
