@@ -75,6 +75,10 @@ const techStack = [
     note: "The framework I use when I want to ship a real product fast.",
   },
   {
+    name: "TanStack Start",
+    note: "Got in early before it became everyone's Next.js exit plan.",
+  },
+  {
     name: "Convex",
     note: "Backend with pure simplicity and real-time speed.",
   },
@@ -93,6 +97,10 @@ const techStack = [
   {
     name: "TypeScript",
     note: "Saves my life daily by catching bugs before they even happen.",
+  },
+  {
+    name: "PostHog",
+    note: "So I actually know if anyone uses the stuff I ship.",
   },
 ];
 
