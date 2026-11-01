@@ -171,6 +171,7 @@ function ProjectCard({ project }: { project: Project }) {
             className="ink-link text-moss dark:text-moss-dark"
           >
             Visit site
+            <ExternalArrow />
           </a>
         )}
         <a
@@ -180,6 +181,7 @@ function ProjectCard({ project }: { project: Project }) {
           className="ink-link text-moss dark:text-moss-dark"
         >
           Source
+          <ExternalArrow />
         </a>
       </div>
     </article>
@@ -208,7 +210,7 @@ const techStack = [
     note: "Finally, an auth setup that doesn't make me want to quit coding.",
   },
   {
-    name: "shadcn",
+    name: "shadcn/ui",
     note: "Beautiful components I can actually own and tweak.",
   },
   {
@@ -228,6 +230,16 @@ const techStack = [
     note: "So I actually know if anyone uses the stuff I ship.",
   },
 ];
+
+function ExternalArrow() {
+  return (
+    <span aria-hidden="true" className="ml-0.5 inline-block text-[0.85em]">
+      ↗
+    </span>
+  );
+}
+
+const email = "johnsontolotriniavo@gmail.com";
 
 const links = [
   { label: "GitHub", href: "https://github.com/RaNiiJohnson" },
@@ -254,11 +266,23 @@ function Home() {
             alt="Johnson Tolotriniavo"
             className="h-14 w-14 rounded-full object-cover"
           />
-          <h1 className="font-name text-3xl font-semibold leading-tight tracking-tighter text-ink sm:text-4xl dark:text-ink-dark">
-            Johnson Tolotriniavo
-          </h1>
+          <div>
+            <h1 className="font-name text-3xl font-semibold leading-tight tracking-tighter text-ink sm:text-4xl dark:text-ink-dark">
+              Johnson Tolotriniavo
+            </h1>
+            <p className="mt-1 text-sm text-mute dark:text-mute-dark">
+              Full-stack developer · Antananarivo, Madagascar
+            </p>
+          </div>
         </div>
-        <p className="mt-6 max-w-lg text-ink-soft dark:text-ink-soft-dark">
+        <a
+          href={`mailto:${email}`}
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-moss-soft px-3 py-1 text-xs font-medium text-moss dark:bg-moss-soft-dark dark:text-moss-dark"
+        >
+          <span className="pulse-dot" aria-hidden="true" />
+          Available for work
+        </a>
+        <p className="mt-5 max-w-lg text-ink-soft dark:text-ink-soft-dark">
           I build every single part of a web app, from the database up to the
           screen.
           <br /> Right now most of my energy goes into{" "}
@@ -291,6 +315,7 @@ function Home() {
               className="text-ink-soft dark:text-ink-soft-dark font-bold border-b"
             >
               {link.label}
+              <ExternalArrow />
             </a>
           ))}
         </div>
@@ -328,10 +353,10 @@ function Home() {
         </p>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           <a
-            href="mailto:johnsontolotriniavo@gmail.com"
+            href={`mailto:${email}`}
             className="text-ink-soft dark:text-ink-soft-dark border-b"
           >
-            Johnsontolotriniavo@gmail.com
+            {email}
           </a>
         </div>
       </section>
