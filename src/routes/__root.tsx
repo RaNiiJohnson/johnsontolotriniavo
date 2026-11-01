@@ -18,7 +18,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Full stack developer building Hallomada, a community, jobs and housing network for the Malagasy diaspora in Germany.",
+          "Full stack developer building Hallomada, the community platform for the Malagasy diaspora in Germany, and Lyr'X, a lyrics and music-discovery platform for web and Android.",
       },
     ],
     links: [
