@@ -241,7 +241,7 @@ function Home() {
   return (
     <main className="mx-auto flex max-w-2xl flex-col px-6 py-16 sm:py-24 space-y-20">
       <header className="mb-16 flex items-center justify-between">
-        <span className="font-display text-sm tracking-wide text-mute dark:text-mute-dark">
+        <span className="font-sans text-sm font-semibold tracking-tight text-ink-soft dark:text-ink-soft-dark">
           Johnson.dev
         </span>
         <ThemeToggle />
@@ -254,7 +254,7 @@ function Home() {
             alt="Johnson Tolotriniavo"
             className="h-14 w-14 rounded-full object-cover"
           />
-          <h1 className="font-display text-4xl font-light leading-tight tracking-tight text-ink sm:text-5xl dark:text-ink-dark">
+          <h1 className="font-sans text-3xl font-semibold leading-tight tracking-tighter text-ink sm:text-4xl dark:text-ink-dark">
             Johnson Tolotriniavo
           </h1>
         </div>
