@@ -7,19 +7,32 @@ import {
 } from "@tanstack/react-router";
 import appCss from "~/styles/app.css?url";
 
+const siteUrl: string = import.meta.env.VITE_SITE_URL ?? "";
+const title = "Johnson Tolotriniavo — Full-stack developer";
+const description =
+  "Full-stack developer in Antananarivo, available for work. Building Hallomada, the community platform for the Malagasy diaspora in Germany, and Lyr'X, a lyrics and music-discovery platform for web and Android.";
+const ogImage = `${siteUrl}/og.png`;
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        title: "Johnson Tolotriniavo",
-      },
-      {
-        name: "description",
-        content:
-          "Full stack developer building Hallomada, the community platform for the Malagasy diaspora in Germany, and Lyr'X, a lyrics and music-discovery platform for web and Android.",
-      },
+      { title },
+      { name: "description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Johnson Tolotriniavo" },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:image", content: ogImage },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Johnson Tolotriniavo, full-stack developer" },
+      ...(siteUrl ? [{ property: "og:url", content: `${siteUrl}/` }] : []),
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: ogImage },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
