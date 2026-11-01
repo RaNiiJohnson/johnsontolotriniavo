@@ -90,6 +90,7 @@ const projects: Project[] = [
       "Convex",
       "Better Auth",
       "next-intl",
+      "PostHog",
       "shadcn/ui",
       "Tailwind",
       "TypeScript",
