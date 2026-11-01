@@ -60,14 +60,131 @@ function SectionLabel({ index, label }: { index: string; label: string }) {
   );
 }
 
-const hallomadaStack = [
-  "Next.js",
-  "Convex",
-  "Better Auth",
-  "shadcn/ui",
-  "Tailwind",
-  "TypeScript",
+type Project = {
+  name: string;
+  href?: string;
+  source: string;
+  status: string;
+  summary: string;
+  highlights: string[];
+  stack: string[];
+};
+
+const projects: Project[] = [
+  {
+    name: "Hallomada.de",
+    href: "https://www.hallomada.de",
+    source: "https://github.com/RaNiiJohnson/hallomada",
+    status: "Live",
+    summary:
+      "The community platform for the Malagasy diaspora in Germany. One place to meet people, find work, find a home and find the right local provider.",
+    highlights: [
+      "Communities by city or topic, with posts, comments and private messaging",
+      "Job offers with applications, and housing listings with photos and a map",
+      "Provider showcase pages: caterers, photographers, hairdressers, reachable on WhatsApp",
+      "Admin dashboard: pre-publication moderation, reports, users, quotas and an audit log",
+      "French, German and English, with rate limiting and server-side validation",
+    ],
+    stack: [
+      "Next.js",
+      "Convex",
+      "Better Auth",
+      "next-intl",
+      "shadcn/ui",
+      "Tailwind",
+      "TypeScript",
+    ],
+  },
+  {
+    name: "Lyr'X",
+    source: "https://github.com/RaNiiJohnson/LyrX",
+    status: "In progress · web + Android",
+    summary:
+      "A lyrics and music-discovery platform launching around the Malagasy music scene. Artists publish their songs, fans contribute lyrics and keep their favourite lines.",
+    highlights: [
+      "Artist catalogues with albums, credits and listening links, plus attributed fan lyrics",
+      "Public search, likes, comments and private notebooks of lyric excerpts",
+      "Shareable 1080×1920 lyric cards, checked server-side before export",
+      "Moderation and admin tools for reports, accounts and badges",
+      "Turborepo monorepo: web and Expo Android app on one shared Convex backend",
+    ],
+    stack: [
+      "TanStack Start",
+      "Expo",
+      "React Native",
+      "Convex",
+      "Better Auth",
+      "Turborepo",
+      "TypeScript",
+    ],
+  },
 ];
+
+function ProjectCard({ project }: { project: Project }) {
+  const live = Boolean(project.href);
+  return (
+    <article className="rounded-lg border border-line p-6 dark:border-line-dark">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        {project.href ? (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noreferrer"
+            className="ink-link font-display text-lg font-medium text-ink dark:text-ink-dark"
+          >
+            {project.name}
+          </a>
+        ) : (
+          <h3 className="font-display text-lg font-medium text-ink dark:text-ink-dark">
+            {project.name}
+          </h3>
+        )}
+        <span className="inline-flex items-center gap-2 rounded-full bg-moss-soft px-3 py-1 text-xs font-medium text-moss dark:bg-moss-soft-dark dark:text-moss-dark">
+          {live && <span className="pulse-dot" aria-hidden="true" />}
+          {project.status}
+        </span>
+      </div>
+      <p className="mt-3 text-ink-soft dark:text-ink-soft-dark">
+        {project.summary}
+      </p>
+      <ul className="mt-5 space-y-2 text-sm text-ink-soft dark:text-ink-soft-dark">
+        {project.highlights.map((item) => (
+          <li key={item}>— {item}</li>
+        ))}
+      </ul>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {project.stack.map((tech) => (
+          <span
+            key={tech}
+            className="rounded-full border border-line px-3 py-1 text-xs text-ink-soft dark:border-line-dark dark:text-ink-soft-dark"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+      <div className="mt-5 flex gap-5 text-sm">
+        {project.href && (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noreferrer"
+            className="ink-link text-moss dark:text-moss-dark"
+          >
+            Visit site
+          </a>
+        )}
+        <a
+          href={project.source}
+          target="_blank"
+          rel="noreferrer"
+          className="ink-link text-moss dark:text-moss-dark"
+        >
+          Source
+        </a>
+      </div>
+    </article>
+  );
+}
 
 const techStack = [
   {
@@ -77,6 +194,10 @@ const techStack = [
   {
     name: "TanStack Start",
     note: "Got in early before it became everyone's Next.js exit plan.",
+  },
+  {
+    name: "Expo",
+    note: "Same backend, same types, now in your pocket on Android.",
   },
   {
     name: "Convex",
@@ -99,6 +220,10 @@ const techStack = [
     note: "Saves my life daily by catching bugs before they even happen.",
   },
   {
+    name: "Turborepo",
+    note: "Keeps web, mobile and backend in one repo without the chaos.",
+  },
+  {
     name: "PostHog",
     note: "So I actually know if anyone uses the stuff I ship.",
   },
@@ -116,7 +241,7 @@ function Home() {
   return (
     <main className="mx-auto flex max-w-2xl flex-col px-6 py-16 sm:py-24 space-y-20">
       <header className="mb-16 flex items-center justify-between">
-        <span className="font-display text-sm tracking-wide text-mute dark:text-mute-dark">
+        <span className="font-sans text-sm font-semibold tracking-tight text-ink-soft dark:text-ink-soft-dark">
           Johnson.dev
         </span>
         <ThemeToggle />
@@ -129,7 +254,7 @@ function Home() {
             alt="Johnson Tolotriniavo"
             className="h-14 w-14 rounded-full object-cover"
           />
-          <h1 className="font-display text-4xl font-light leading-tight tracking-tight text-ink sm:text-5xl dark:text-ink-dark">
+          <h1 className="font-name text-3xl font-semibold leading-tight tracking-tighter text-ink sm:text-4xl dark:text-ink-dark">
             Johnson Tolotriniavo
           </h1>
         </div>
@@ -143,8 +268,18 @@ function Home() {
             rel="noreferrer"
             className="ink-link font-display text-lg font-medium text-ink dark:text-ink-dark"
           >
-            Hallomada.
+            Hallomada
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://github.com/RaNiiJohnson/LyrX"
+            target="_blank"
+            rel="noreferrer"
+            className="ink-link font-display text-lg font-medium text-ink dark:text-ink-dark"
+          >
+            Lyr'X
           </a>
+          .
         </p>
         <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
           {links.map((link) => (
@@ -163,61 +298,10 @@ function Home() {
 
       <section>
         <SectionLabel index="01" label="What I'm building" />
-        <div className="rounded-lg border border-line p-6 dark:border-line-dark">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <a
-              href="https://www.hallomada.de"
-              target="_blank"
-              rel="noreferrer"
-              className="ink-link font-display text-lg font-medium text-ink dark:text-ink-dark"
-            >
-              Hallomada.de
-            </a>
-            <span className="rounded-full bg-moss-soft px-3 py-1 text-xs font-medium text-moss dark:bg-moss-soft-dark dark:text-moss-dark">
-              In progress
-            </span>
-          </div>
-          <p className="mt-3 text-ink-soft dark:text-ink-soft-dark">
-            A community, jobs and housing network for the Malagasy diaspora in
-            Germany. It connects natives and expats so they can find work
-            opportunities, share housing leads and stay in touch with people who
-            understand the move.
-          </p>
-          <ul className="mt-5 space-y-2 text-sm text-ink-soft dark:text-ink-soft-dark">
-            <li>— Job and internship postings shared within the community</li>
-            <li>— Housing listings vetted by other members</li>
-            <li>
-              — A network built specifically for one diaspora, not everyone
-            </li>
-          </ul>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {hallomadaStack.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full border border-line px-3 py-1 text-xs text-ink-soft dark:border-line-dark dark:text-ink-soft-dark"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-          <div className="mt-5 flex gap-5 text-sm">
-            <a
-              href="https://www.hallomada.de"
-              target="_blank"
-              rel="noreferrer"
-              className="ink-link text-moss dark:text-moss-dark"
-            >
-              Visit site
-            </a>
-            <a
-              href="https://github.com/RaNiiJohnson/hallohallo"
-              target="_blank"
-              rel="noreferrer"
-              className="ink-link text-moss dark:text-moss-dark"
-            >
-              Source
-            </a>
-          </div>
+        <div className="space-y-6">
+          {projects.map((project) => (
+            <ProjectCard key={project.name} project={project} />
+          ))}
         </div>
       </section>
 

@@ -18,7 +18,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Full stack developer building Hallomada, a community, jobs and housing network for the Malagasy diaspora in Germany.",
+          "Full stack developer building Hallomada, the community platform for the Malagasy diaspora in Germany, and Lyr'X, a lyrics and music-discovery platform for web and Android.",
       },
     ],
     links: [
@@ -36,7 +36,7 @@ export const Route = createRootRoute({
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Geist:wght@500;600&display=swap",
       },
     ],
   }),

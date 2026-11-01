@@ -5,6 +5,7 @@
 @theme {
     --font-display: "Fraunces", "Georgia", serif;
     --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --font-name: "Geist", "Inter", "Helvetica Neue", Arial, sans-serif;
 
     --color-paper: #fafaf9;
     --color-ink: #1a1a18;
