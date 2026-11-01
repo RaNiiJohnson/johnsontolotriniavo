@@ -310,7 +310,7 @@ function Home() {
         <ul className="space-y-5">
           {techStack.map((tech) => (
             <li key={tech.name} className="flex flex-col sm:flex-row sm:gap-6">
-              <span className="font-display w-40 shrink-0 text-ink dark:text-ink-dark">
+              <span className="font-display font-medium w-40 shrink-0 text-ink dark:text-ink-dark">
                 {tech.name}
               </span>
               <span className="text-sm text-ink-soft dark:text-ink-soft-dark">
