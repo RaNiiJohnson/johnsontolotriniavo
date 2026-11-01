@@ -254,7 +254,7 @@ function Home() {
             alt="Johnson Tolotriniavo"
             className="h-14 w-14 rounded-full object-cover"
           />
-          <h1 className="font-sans text-3xl font-semibold leading-tight tracking-tighter text-ink sm:text-4xl dark:text-ink-dark">
+          <h1 className="font-name text-3xl font-semibold leading-tight tracking-tighter text-ink sm:text-4xl dark:text-ink-dark">
             Johnson Tolotriniavo
           </h1>
         </div>
